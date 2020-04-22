@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
-
+import {UsersPageModule} from '../users/users.module'
 import { DashboardPage } from './dashboard.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { DashboardPage } from './dashboard.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    UsersPageModule
   ],
   declarations: [DashboardPage]
 })
