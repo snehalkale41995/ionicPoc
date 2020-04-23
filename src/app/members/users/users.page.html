@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -17,11 +17,69 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content> -->
+
+
+
+
+  <ion-content padding="true" class="has-header">
+
+    <table>
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Job Title</th>
+        <th>Favorite Color</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cr of users">
+         <th>{{cr.employee_name}}</th>
+         <td>{{cr.employee_name}}</td>
+         <td>{{cr.employee_name}}</td> 
+         <td>{{cr.employee_name}}</td> 
+         </tr>
+      </tbody>
+    </table>
+  
+         </ion-content>
   
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
     </div>
   -->
-</ion-content>
+
+
+
+  <!-- <tr>
+    <td>James</td>
+    <td>Matman</td>
+    <td>Chief Sandwich Eater</td>
+    <td>Lettuce Green</td>
+  </tr>
+  <tr>
+    <td>The</td>
+    <td>Tick</td>
+    <td>Crimefighter Sorta</td>
+    <td>Blue</td>
+  </tr>
+  <tr>
+    <td>Jokey</td>
+    <td>Smurf</td>
+    <td>Giving Exploding Presents</td>
+    <td>White</td>
+  </tr>
+  <tr>
+    <td>Cindy</td>
+    <td>Beyler</td>
+    <td>Sales Representative</td>
+    <td>Red</td>
+  </tr>
+  <tr>
+    <td>Captain</td>
+    <td>Cool</td>
+    <td>Tree Crusher</td>
+    <td>Blue</td>
+  </tr> -->
