@@ -10,14 +10,17 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./user-details.page.scss'],
 })
 export class UserDetailsPage implements OnInit {
-  user : [];
+  user : {};
   isLoaded = false ;
-  constructor(private _userService: usersService, private route : ActivatedRoute, public loadingController: LoadingController) { }
+  constructor(private _userService: usersService, private route : ActivatedRoute, public loadingController: LoadingController,
+              private router : Router) { }
 
   ngOnInit() {
-    this.getUserDetails();
+    if(this.route.snapshot.paramMap.get('id')){
+      this.getUserDetails();
+    }
   }
-  // this.route.snapshot.paramMap.get('id')
+
   async getUserDetails() {
     const loading = await this.loadingController.create({
       message: 'Please wait...',
@@ -43,6 +46,29 @@ export class UserDetailsPage implements OnInit {
         this.isLoaded = true;
       });
   }
+
+
+  async updateUser(){
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+   
+    await loading.present();
+    await this._userService.updateUser(this.user)
+    .subscribe(res => {
+       console.log("res", res)
+       this.router.navigate(['members','dashboard']) 
+       loading.dismiss();  
+         }, (err) => {
+        console.log(err);
+        loading.dismiss();
+      });
+      console.log(this.user)
+   }
+
+
+  
 
 
 }

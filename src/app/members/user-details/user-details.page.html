@@ -1,18 +1,4 @@
-<!-- 
-  <ion-toolbar>
-    <ion-title>User Details</ion-title>
-  </ion-toolbar>
-  <ul>
-    <li>employee_name : {{user.employee_name}}</li>
-    <li>employee_salary : {{user.employee_salary}}</li>
-    <li>employee_age : {{user.employee_age}}</li>
-  </ul>  
-
-
-   -->
-
-
-   <ion-header>
+   <!-- <ion-header>
     <ion-toolbar>
       <ion-title>dashboard</ion-title>
     </ion-toolbar>
@@ -33,4 +19,37 @@
       </ion-button>
     </ion-buttons>
   </ion-content>
+   -->
+
+   <ion-content  padding>
+    <form #form="ngForm" (ngSubmit)="updateUser(form)">
+      <ion-grid *ngIf=isLoaded >
+        <ion-row  justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <ion-button title="Go Back"  href="members/dashboard" ><ion-icon name="arrow-back"></ion-icon></ion-button>
+              <h3>Update User</h3>
+            </div>
+            <div padding>
+              <ion-item >
+                  <ion-input name="employee_name" [(ngModel)]="user.employee_name" type="text" placeholder="name" ngModel required></ion-input>
+              </ion-item>
+              
+              <ion-item>
+                <ion-input name="employee_salary" [(ngModel)]="user.employee_salary" type="text" placeholder="salary" ngModel required></ion-input>
+              </ion-item>
+  
+              <ion-item>
+                <ion-input name="employee_age" [(ngModel)]="user.employee_age" type="text" placeholder="age" ngModel ></ion-input>
+              </ion-item>
+  
+            </div>
+            <div ngClass="addBtn">
+              <ion-button  (click)="addUser()" size="small" type="submit" [disabled]="form.invalid" expand="block">Update User</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content> 
   

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service'
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import AppConfig from '../../../appConstants/appConfig.js'
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -8,21 +10,33 @@ import {Router} from '@angular/router'
 })
 export class LoginPage implements OnInit {
   user = {}
-  constructor(private authService : AuthenticationService, private router: Router) { }
+  constructor(private authService : AuthenticationService, private router: Router, public alertController: AlertController) { }
 
   ngOnInit() {
   }
    
-  login(user){
+  login(){
     console.log("user", this.user)
-    user =  this.user
-    if(user && user.email ==="admin@gmail.com" && user.password ==="admin"){
-      this.authService.login();
-      this.router.navigate(['members','dashboard'])
+    let compRef = this ;
+    if(this.user && this.user.email === AppConfig.userName && this.user.password === AppConfig.password){
+    this.router.navigate(['members','dashboard'])
+     this.authService.login();
     }
     else{
-      
+      this.presentAlert()
     }
-    
   }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Login Failed !',
+     // subHeader: 'Subtitle',
+      message: 'Username or Password is incorrect',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
 }

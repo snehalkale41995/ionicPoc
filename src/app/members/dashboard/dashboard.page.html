@@ -1,10 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+    <ion-title>User List</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-<ion-button  href="/members/user-form" ngClass="add_user" expand="block">Add  User</ion-button> 
+
+<ion-button title="Add User" shape="round" href="/members/user-form" ><ion-icon name="add-circle"></ion-icon></ion-button> 
+<!-- <ion-button  href="/members/user-form" ngClass="add_user" expand="block">Add  User</ion-button>  -->
+
+<ion-button title="Log Out" (click)="logout()" shape="round" ><ion-icon name="log-out"></ion-icon></ion-button> 
+
+
 <app-users></app-users> 
-<ion-button  (click)="logout()" expand="block">Logout</ion-button> 
+<!-- <ion-button  (click)="logout()" expand="block">Logout</ion-button>  -->
 </ion-content>

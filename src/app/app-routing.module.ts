@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'members',
-   // canActivate : [AuthGuardService],
+    canActivate : [AuthGuardService],
     loadChildren: () => import('./members/member-routing.module').then( m => m.MemberRoutingModule)
   },
 ];

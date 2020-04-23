@@ -23,63 +23,38 @@
 
 
   <ion-content padding="true" class="has-header">
-
     <table>
       <thead>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Job Title</th>
-        <th>Favorite Color</th>
+        <th>Id</th>
+        <th>User Name</th>
+        <th>User Age</th>
+        <th>User Salary</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cr of users">
-         <th>{{cr.employee_name}}</th>
+         <th>{{cr.id}}</th>
          <td>{{cr.employee_name}}</td>
-         <td>{{cr.employee_name}}</td> 
-         <td>{{cr.employee_name}}</td> 
+         <td>{{cr.employee_age}}</td> 
+         <td>{{cr.employee_salary}}</td> 
+         <td > 
+          <ion-button routerLink="/members/user-details/{{cr.id}}">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button></td>
+          <td> 
+          <ion-button (click) = "deleteUser(cr.id)">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button></td>
+        
          </tr>
       </tbody>
     </table>
-  
          </ion-content>
+ 
+
+
+
   
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
-
-
-
-  <!-- <tr>
-    <td>James</td>
-    <td>Matman</td>
-    <td>Chief Sandwich Eater</td>
-    <td>Lettuce Green</td>
-  </tr>
-  <tr>
-    <td>The</td>
-    <td>Tick</td>
-    <td>Crimefighter Sorta</td>
-    <td>Blue</td>
-  </tr>
-  <tr>
-    <td>Jokey</td>
-    <td>Smurf</td>
-    <td>Giving Exploding Presents</td>
-    <td>White</td>
-  </tr>
-  <tr>
-    <td>Cindy</td>
-    <td>Beyler</td>
-    <td>Sales Representative</td>
-    <td>Red</td>
-  </tr>
-  <tr>
-    <td>Captain</td>
-    <td>Cool</td>
-    <td>Tree Crusher</td>
-    <td>Blue</td>
-  </tr> -->
