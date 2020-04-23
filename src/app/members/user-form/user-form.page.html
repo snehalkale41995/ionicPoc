@@ -1,0 +1,30 @@
+<ion-content  padding>
+  <form #form="ngForm" (ngSubmit)="addUser(form)">
+    <ion-grid>
+      <ion-row  justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Add User</h3>
+          </div>
+          <div padding>
+            <ion-item >
+                <ion-input name="empname" [(ngModel)]="user.empname" type="text" placeholder="name" ngModel required></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input name="salary" [(ngModel)]="user.salary" type="text" placeholder="salary" ngModel required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input name="age" [(ngModel)]="user.age" type="text" placeholder="age" ngModel ></ion-input>
+            </ion-item>
+
+          </div>
+          <div ngClass="addBtn">
+            <ion-button  (click)="addUser()" size="small" type="submit" [disabled]="form.invalid" expand="block">Add User</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content> 

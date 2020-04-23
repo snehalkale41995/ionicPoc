@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'user-details/:id',
     loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
+  },  {
+    path: 'user-form',
+    loadChildren: () => import('./user-form/user-form.module').then( m => m.UserFormPageModule)
   },
+
 
   // {
   //   path: 'userDetail/:id',

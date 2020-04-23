@@ -9,7 +9,7 @@ import {usersService} from '../../services/users.service';
 })
 export class UsersPage implements OnInit {
    
-   products : [];
+   users : [];
   
   constructor(private _usersService : usersService) { }
 
@@ -18,10 +18,11 @@ export class UsersPage implements OnInit {
     }
 
     async getData() {
-      await this._usersService.getProducts()
+      await this._usersService.getUsers()
         .subscribe(res => {
           console.log(res);
-         this.products = res;
+         
+         this.users = res;
         }, err => {
           console.log(err);
          

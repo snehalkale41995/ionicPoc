@@ -1,9 +1,36 @@
-<ion-header>
+<!-- 
   <ion-toolbar>
-    <ion-title>userDetails</ion-title>
+    <ion-title>User Details</ion-title>
   </ion-toolbar>
-</ion-header>
+  <ul>
+    <li>employee_name : {{user.employee_name}}</li>
+    <li>employee_salary : {{user.employee_salary}}</li>
+    <li>employee_age : {{user.employee_age}}</li>
+  </ul>  
 
-<ion-content>
 
-</ion-content>
+   -->
+
+
+   <ion-header>
+    <ion-toolbar>
+      <ion-title>dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content *ngIf=isLoaded>
+    <ul >
+      <li>employee_name : {{user.employee_name}}</li>
+      <li>employee_salary : {{user.employee_salary}}</li>
+      <li>employee_age : {{user.employee_age}}</li>
+    </ul>  
+    <ion-buttons>
+      <ion-button >
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button >
+        <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-content>
+  

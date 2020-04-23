@@ -82,7 +82,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Product } from './product';
+
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -103,14 +103,13 @@ const httpOptions = {
     };
   }
   
-  getProductById(id: string): Observable<any> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.get(url, httpOptions).pipe(
-      map(this.extractData),
-      catchError(this.handleError));
-  }
+  // getUserById(id): Observable<any> {
+  //   return this.http.get(apiUrl, httpOptions).pipe(
+  //     map( this.extractUser),
+  //     catchError(this.handleError));
+  // }
 
-  getProducts(): Observable<any> {
+  getUsers(): Observable<any> {
     return this.http.get(apiUrl, httpOptions).pipe(
       map( this.extractData),
       catchError(this.handleError));
@@ -118,28 +117,32 @@ const httpOptions = {
 
   
 private extractData(res: Response) {
-  console.log("response", res)
+  console.log("response", res);
   let body = res.data;
   return body || { };
 }
+
+// private extractUser(res: Response, id){
   
-  getProduct(id: any): Observable<Product> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
+// }  
+  getUser(id: any): Observable<any> {
+    let url = 'http://dummy.restapiexample.com/api/v1/employee/1'
+   // const url = `${apiUrl}/${id}`;
+    return this.http.get<any>(url).pipe(
       tap(_ => console.log(`fetched product id=${id}`)),
-      catchError(this.handleError<Product>(`getProduct id=${id}`))
+      catchError(this.handleError<any>(`getUser id=${id}`))
     );
   }
   
-  postProduct(data): Observable<any> {
-    const url = `${apiUrl}/add_with_students`;
+  postUser(data): Observable<any> {
+    const url = `http://dummy.restapiexample.com/api/v1/create`;
     return this.http.post(url, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
   
-  updateProduct(id: string, data): Observable<any> {
+  updateUser(id: string, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, data, httpOptions)
       .pipe(
@@ -147,7 +150,7 @@ private extractData(res: Response) {
       );
   }
   
-  deleteProduct(id: string): Observable<{}> {
+  deleteUser(id: string): Observable<{}> {
     const url = `${apiUrl}/${id}`;
     return this.http.delete(url, httpOptions)
       .pipe(
