@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {usersService} from '../../services/users.service';
-import {Product} from '../../services/product'
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.page.html',
@@ -9,7 +9,7 @@ import {Product} from '../../services/product'
 })
 export class UsersPage implements OnInit {
    
-   products : any;
+   products : [];
   
   constructor(private _usersService : usersService) { }
 
@@ -18,12 +18,10 @@ export class UsersPage implements OnInit {
     }
 
     async getData() {
-     
       await this._usersService.getProducts()
         .subscribe(res => {
-          this.products = res;
-          console.log(this.products);
-         
+          console.log(res);
+         this.products = res;
         }, err => {
           console.log(err);
          

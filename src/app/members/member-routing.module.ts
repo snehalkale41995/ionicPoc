@@ -5,10 +5,20 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },  {
+  },
+  {
     path: 'users',
     loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
   },
+  {
+    path: 'user-details/:id',
+    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
+  },
+
+  // {
+  //   path: 'userDetail/:id',
+  //   loadChildren: () => import('./user-details/user-details.component').then( m => m.UserDetailsComponent)
+  // }
 
 ];
 

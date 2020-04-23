@@ -103,13 +103,25 @@ const httpOptions = {
     };
   }
   
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(apiUrl)
-      .pipe(
-        tap(product => console.log('fetched products')),
-        catchError(this.handleError('getProducts', []))
-      );
+  getProductById(id: string): Observable<any> {
+    const url = `${apiUrl}/${id}`;
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
+  getProducts(): Observable<any> {
+    return this.http.get(apiUrl, httpOptions).pipe(
+      map( this.extractData),
+      catchError(this.handleError));
+  }
+
+  
+private extractData(res: Response) {
+  console.log("response", res)
+  let body = res.data;
+  return body || { };
+}
   
   getProduct(id: any): Observable<Product> {
     const url = `${apiUrl}/${id}`;
@@ -119,28 +131,28 @@ const httpOptions = {
     );
   }
   
-  addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(apiUrl, product, httpOptions).pipe(
-      tap((prod: Product) => console.log(`added product w/ id=${prod._id}`)),
-      catchError(this.handleError<Product>('addProduct'))
-    );
+  postProduct(data): Observable<any> {
+    const url = `${apiUrl}/add_with_students`;
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   
-  updateProduct(id: any, product: any): Observable<any> {
+  updateProduct(id: string, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
-    return this.http.put(url, product, httpOptions).pipe(
-      tap(_ => console.log(`updated product id=${id}`)),
-      catchError(this.handleError<any>('updateProduct'))
-    );
+    return this.http.put(url, data, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   
-  deleteProduct(id: any): Observable<Product> {
+  deleteProduct(id: string): Observable<{}> {
     const url = `${apiUrl}/${id}`;
-  
-    return this.http.delete<Product>(url, httpOptions).pipe(
-      tap(_ => console.log(`deleted product id=${id}`)),
-      catchError(this.handleError<Product>('deleteProduct'))
-    );
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   }
