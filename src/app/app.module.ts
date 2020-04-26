@@ -11,15 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 import {IonicStorageModule} from '@ionic/storage'
 import {HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Facebook } from '@ionic-native/facebook/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule,  HttpClientModule, HttpModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
+  imports: [BrowserModule,  HttpClientModule, HttpModule, IonicModule.forRoot(),
+             AppRoutingModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      Facebook
   ],
   bootstrap: [AppComponent]
 })
